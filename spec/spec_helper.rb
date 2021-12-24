@@ -5,6 +5,10 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 require 'rails/all'
 
+# Requires supporting ruby files with custom matchers and macros, etc,
+# in spec/support/ and its subdirectories.
+Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f}
+
 RSpec.configure do |config|
   # Allows RSpec to persist some state between runs in order to support
   # the `--only-failures` and `--next-failure` CLI options. We recommend
@@ -73,6 +77,10 @@ RSpec.configure do |config|
   config.expose_dsl_globally = true
 
   config.include FactoryBot::Syntax::Methods
+
+  config.include Devise::Test::IntegrationHelpers, type: :request
+
+  config.include JwtHelper, type: :request
 end
 
 Shoulda::Matchers.configure do |config|
