@@ -2,7 +2,13 @@ class RegistrationsController < Devise::RegistrationsController
   # Needed by devise to authenticate the user after registration and return the auth token
   prepend_before_action :allow_params_authentication!, only: :create
 
-  respond_to :json
+  def respond_with(resource, opts = {})
+    if resource.valid?
+      render json: resource
+    else
+      render json: { message: resource.errors.full_messages.join(',')}, status: 400
+    end
+  end
 
   # Sign in after sign up
   def sign_up(resource_name, resource)
