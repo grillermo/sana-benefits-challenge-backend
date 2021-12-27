@@ -70,7 +70,7 @@ describe RegistrationsController, type: :request do
         create_user
         response_error = JSON.parse(response.body)
 
-        expect(response_error['message']).to eql "Email can't be blank,Password can't be blank"
+        expect(response_error['message']).to eql "Email can't be blank, Password can't be blank"
       end
     end
   end

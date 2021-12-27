@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
     if resource.valid?
       render json: resource
     else
-      render json: { message: resource.errors.full_messages.join(',')}, status: 400
+      render json: { message: resource.errors_message }, status: 400
     end
   end
 
