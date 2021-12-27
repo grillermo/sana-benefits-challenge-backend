@@ -14,4 +14,6 @@ Rails.application.routes.draw do
       sessions: 'sessions',
       registrations: 'registrations'
     }
+
+  resource :aqi_warning
 end
