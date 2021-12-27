@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_24_022415) do
+ActiveRecord::Schema.define(version: 2021_12_27_011401) do
+
+  create_table "aqi_warnings", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "threshold", null: false
+    t.string "location", null: false
+    t.string "longitude", null: false
+    t.string "latitude", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_aqi_warnings_on_user_id"
+  end
 
   create_table "jwt_denylists", force: :cascade do |t|
     t.string "jti"
