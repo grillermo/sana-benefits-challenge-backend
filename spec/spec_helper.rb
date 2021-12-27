@@ -82,6 +82,7 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :request
 
   config.include JwtHelper, type: :request
+  config.include RequestsHelpers, type: :request
 end
 
 Shoulda::Matchers.configure do |config|

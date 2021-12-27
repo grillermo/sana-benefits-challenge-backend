@@ -5,4 +5,14 @@ class AQIWarning < ApplicationRecord
   validates :threshold, numericality: { greater_than: 0 }
 
   belongs_to :user
+
+  def as_json(options={})
+    {
+      id: self.id,
+      latitude: self.latitude,
+      longitude: self.longitude,
+      location: self.location,
+      threshold: self.threshold,
+    }
+  end
 end
